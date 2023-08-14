@@ -195,7 +195,6 @@ function App() {
     setBtn(true); 
   }
   const savebtnHnadler = (accordina2) =>{
-    console.log("in 1ssave handler")
     const count = Object.keys(selectedAcc).length
     const fill = accordians?.map((acc)=>{ return acc?.options }).map((opt)=>{ 
        return opt[0].text === "No" && opt[0].ids })
