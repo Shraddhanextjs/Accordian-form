@@ -192,15 +192,13 @@ function App() {
       ...prevSelectedAcc,
       [quesId]: optId,
     }))
-   setBtn(true);
- 
+    setBtn(true); 
   }
-  const savebtnHnadler = () =>{
+  const savebtnHnadler = (accordina2) =>{
+    console.log("in 1ssave handler")
     const count = Object.keys(selectedAcc).length
-    console.log(selectedAcc,"select acc")
     const fill = accordians?.map((acc)=>{ return acc?.options }).map((opt)=>{ 
        return opt[0].text === "No" && opt[0].ids })
-       console.log(fill,"fill")
       if(count > 3){
        const data = fill.every((fit)=> !Object.values(selectedAcc).includes(fit))
          if(data){
@@ -208,15 +206,19 @@ function App() {
         }
         else{
           setbtnEnable(false)
+          if(accordina2){
+            alert("Kindly filled 1 Section with valid response")
+          }
         }
       }
-        
-
   }
   const cancelbtnhandler = () =>{
     setSelectedAcc("")
     setbtnEnable(false)
 
+  }
+  const savehandlerAnswer = () => {
+    savebtnHnadler("accordina2");
   }
   const changeAnsHandler =(quesId,optId) => {
     setSelectedAnswer( prevSelectedAnswer =>({
@@ -249,14 +251,13 @@ function App() {
     setSelectedContent("")
    }
  
-  
-
   return (
     <div className="App">
       <div className='container'>
         Please fill the above to best of your knowledge
           <button className="accordion" onClick={openhandler}>Section 1</button>
           <div className="panel">
+            <div className='note'>Note: All the answers must be done either <b>Yes</b> or <b>NA</b> and saved to proceed further</div>
             { accordians.map((accor)=>(
                 <div key={accor.id}>
                   <p>{accor.question}  </p>
@@ -306,7 +307,7 @@ function App() {
                 </div>
               ))
             }
-             { btnB ? (<> <button className='save'>Save</button>    
+             { btnB ? (<> <button className='save' onClick={savehandlerAnswer}>Save</button>    
                        <button className='cancel' onClick={cancelBtnHnalder}>Cancel</button></>) : ""
             }
           </div>

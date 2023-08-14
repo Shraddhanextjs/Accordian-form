@@ -14,11 +14,18 @@ display: none;
 .save{
   color: black;
   background-color:violet;
+  border: none;
+  border-radius: 10%;
+  padding: 3%;
   margin:2%
+
 }
 .cancel{
   color: black;
   background-color:violet;
+  border: none;
+  border-radius: 10%;
+  padding: 3%;
   margin:2%
 }
 
@@ -44,4 +51,8 @@ display: none;
   display: none;
   background-color: white;
   overflow: hidden;
+}
+.note{
+  /* background-color: tan; */
+  color: sandybrown;
 }
